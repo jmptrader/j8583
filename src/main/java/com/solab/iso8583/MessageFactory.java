@@ -327,9 +327,9 @@ public class MessageFactory<T extends IsoMessage> {
             type = Integer.parseInt(new String(buf, isoHeaderLength, 4, encoding), 16);
 		} else {
 			type = ((buf[isoHeaderLength] - 48) << 12)
-			| ((buf[isoHeaderLength + 1] - 48) << 8)
-			| ((buf[isoHeaderLength + 2] - 48) << 4)
-			| (buf[isoHeaderLength + 3] - 48);
+					| ((buf[isoHeaderLength + 1] - 48) << 8)
+                    | ((buf[isoHeaderLength + 2] - 48) << 4)
+                    | (buf[isoHeaderLength + 3] - 48);
 		}
 		m.setType(type);
 		//Parse the bitmap (primary first)
@@ -465,7 +465,9 @@ public class MessageFactory<T extends IsoMessage> {
 						m.setField(i, val);
 						if (val != null) {
 							if (val.getType() == IsoType.NUMERIC || val.getType() == IsoType.DATE10
-									|| val.getType() == IsoType.DATE4 || val.getType() == IsoType.DATE12
+									|| val.getType() == IsoType.DATE4
+									|| val.getType() == IsoType.DATE12
+									|| val.getType() == IsoType.DATE14
 									|| val.getType() == IsoType.DATE_EXP
 									|| val.getType() == IsoType.AMOUNT
 									|| val.getType() == IsoType.TIME) {
